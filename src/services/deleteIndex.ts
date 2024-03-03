@@ -1,6 +1,6 @@
 import { config } from 'dotenv'
-import { Pinecone } from '@pinecone-database/pinecone'
 import { getEnv, validateEnvironmentVariables } from '../utils/util.js'
+import { AppPinecone } from '../core/core.js'
 
 config()
 validateEnvironmentVariables()
@@ -8,11 +8,13 @@ validateEnvironmentVariables()
 export const deleteIndex = async () => {
     const indexName = getEnv('PINECONE_INDEX')
 
-    const pinecone = new Pinecone()
+    const pinecone = new AppPinecone()
+
+    const index = pinecone.index(indexName)
 
     try {
-        await pinecone.deleteIndex(indexName)
-        console.log(`Index is deleted: ${indexName}`)
+        await index.deleteAll()
+        console.log(`Deleted all record of: ${indexName}`)
     } catch (e) {
         console.error(e?.toString())
     }
