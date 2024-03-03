@@ -56,7 +56,8 @@ export const query = async (query: string, topK: number) => {
         })
 
         console.log(completion.choices[0])
+        return completion.choices[0].message.content
     }
 
-    main()
+    return main()
 }
