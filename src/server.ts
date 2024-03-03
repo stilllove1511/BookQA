@@ -1,8 +1,10 @@
 import express from 'express'
 import { query } from './services/query.js'
+import cors = require('cors')
 
 const app = express()
 app.use(express.json())
+app.use(cors())
 
 app.post('/ask', async (req, res) => {
     const { question, topK } = req.body
