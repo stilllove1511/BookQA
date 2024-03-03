@@ -5,9 +5,9 @@ const app = express()
 app.use(express.json())
 
 app.post('/ask', async (req, res) => {
-    const { question } = req.body
+    const { question, topK } = req.body
 
-    const answer = await query(question, 3)
+    const answer = await query(question, topK)
 
     res.json({
         answer,

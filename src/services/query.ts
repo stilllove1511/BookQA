@@ -8,7 +8,7 @@ import { embedder } from './embeddings.js'
 config()
 validateEnvironmentVariables()
 
-export const query = async (query: string, topK: number) => {
+export const query = async (query: string, topK = 1) => {
     validateEnvironmentVariables()
     const pinecone = new Pinecone({
         apiKey: getEnv('PINECONE_API_KEY'),
