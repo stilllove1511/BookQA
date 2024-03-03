@@ -1,19 +1,19 @@
-import { config } from "dotenv";
-import { Pinecone } from "@pinecone-database/pinecone";
-import { getEnv, validateEnvironmentVariables } from "../utils/util.js";
+import { config } from 'dotenv'
+import { Pinecone } from '@pinecone-database/pinecone'
+import { getEnv, validateEnvironmentVariables } from '../utils/util.js'
 
-config();
-validateEnvironmentVariables();
+config()
+validateEnvironmentVariables()
 
 export const deleteIndex = async () => {
-  const indexName = getEnv("PINECONE_INDEX");
+    const indexName = getEnv('PINECONE_INDEX')
 
-  const pinecone = new Pinecone();
+    const pinecone = new Pinecone()
 
-  try {
-    await pinecone.deleteIndex(indexName);
-    console.log(`Index is deleted: ${indexName}`);
-  } catch (e) {
-    console.error(e?.toString());
-  }
-};
+    try {
+        await pinecone.deleteIndex(indexName)
+        console.log(`Index is deleted: ${indexName}`)
+    } catch (e) {
+        console.error(e?.toString())
+    }
+}

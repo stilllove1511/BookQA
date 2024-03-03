@@ -1,3 +1,3 @@
 export type TextMetadata = {
-  text: string;
+    text: string;
 };
