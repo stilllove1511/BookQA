@@ -37,7 +37,7 @@ class Embedder {
             const embeddings = await Promise.all(
                 batch.map((text) => this.embed(text))
             )
-            await onDoneBatch(embeddings.filter((e) => e.values))
+            await onDoneBatch(embeddings)
         }
     }
 }
